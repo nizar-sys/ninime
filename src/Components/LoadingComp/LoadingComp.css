@@ -1,0 +1,50 @@
+body .loading {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a1a1a;
+  z-index: 9999;
+  display: flex;
+}
+body .loading .spinner {
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-bottom: 3px solid #31b1d4;
+  border-top: 3px solid #31b1d4;
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: rotate-to-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+body .loading .spinner .spinner-two {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  border-bottom: 2px solid transparent;
+  border-top: 2px solid transparent;
+  border-right: 2px solid #fff;
+  border-left: 2px solid #fff;
+  animation-name: rotate-to-left;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes rotate-to-right {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-to-left {
+  to {
+    transform: rotate(-720deg);
+  }
+}

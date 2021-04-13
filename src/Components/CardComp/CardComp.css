@@ -1,0 +1,80 @@
+body {
+  background-color: #222;
+}
+.cover {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eaeaea;
+}
+.post {
+  overflow: hidden;
+  margin-top: 5px;
+}
+.thumb {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin-right: 10px;
+}
+.content {
+  margin-top: 0;
+  overflow: hidden;
+  background: #c0bdbd;
+  padding: 5px 7px;
+}
+@media screen and (max-width: 500px) {
+  .thumbz {
+    width: 120px;
+    height: 80px;
+  }
+}
+
+.thumbz {
+  width: 150px;
+  overflow: hidden;
+  height: 85px;
+}
+.thumb img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  min-height: 100%;
+  min-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 150%;
+  transition: 0.3s ease-in-out;
+}
+
+/* Content */
+@media screen and (max-width: 500px) {
+  h2.episodeye {
+    font-size: 12px;
+  }
+}
+
+.content h2 {
+  color: #444;
+  font-size: 13px;
+  margin: 0;
+}
+.episodeye {
+  font-size: 13px;
+  margin-top: 0;
+  line-height: 20px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.content p {
+  color: #555;
+  font-size: 11px;
+  line-height: 12px;
+  display: block;
+}

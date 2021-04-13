@@ -1,0 +1,171 @@
+.judul__anime {
+  margin-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 4px solid #00adff;
+}
+.judul__anime > h1 {
+  font-size: 24px;
+  color: #e8e8e8;
+}
+.sub__judul__anime h2 {
+  font-size: 13px;
+  padding: 10px;
+  border-radius: 3px;
+  background: #bfbfbf;
+  margin-bottom: 5px;
+  color: #171616;
+}
+#detail__anime {
+  margin: auto;
+  overflow: hidden;
+  float: left;
+  background-color: #2d2d2d;
+  width: 100%;
+}
+#detail__anime img {
+  width: 190px;
+  height: 246px;
+  padding: 1px;
+  float: left;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+.info__anime__detail {
+  overflow: hidden;
+  width: 73%;
+  color: #adabab;
+}
+.info__anime__detail p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0px;
+  line-height: 22px;
+  color: #adabab;
+  padding: 0px;
+}
+.info__anime__detail b {
+  display: block;
+  width: 95px;
+  color: #adabab;
+}
+.sinopsis p {
+  line-height: 25px;
+  color: #adabab;
+  padding: 5px;
+}
+
+/* ===END OF STYLE DETAIL==== */
+
+/* ===STYLE EPS LIST=== */
+.listEps {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.batch {
+  font-size: 13px;
+  margin-bottom: 0px;
+  padding: 0px;
+  overflow: hidden;
+  background: #6e7aff;
+}
+.text-batch {
+  padding: 0 7px;
+  line-height: 30px;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 1px;
+  color: #fff;
+  float: left;
+  display: block;
+}
+.eps {
+  font-size: 13px;
+  margin-bottom: 0px;
+  padding: 0px;
+  overflow: hidden;
+  background: #6e7aff;
+}
+.text-eps {
+  padding: 0 7px;
+  line-height: 30px;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 1px;
+  color: #fff;
+  float: left;
+  display: block;
+}
+.listEps ul {
+  overflow: hidden;
+  display: block;
+}
+.listEps ul li:nth-child(2n + 1) {
+  background: #403c3c;
+}
+.listEps ul li {
+  line-height: 30px;
+  width: 100%;
+  font-size: 11px;
+  margin-bottom: 1px;
+  overflow: hidden;
+  display: inline-block;
+  padding: 0px 5px;
+  color: #c5c3c3;
+}
+.listEps ul li a {
+  color: #c5c3c3;
+  font-size: 13px;
+}
+/* ===END OF STYLE EPS LIST=== */
+
+/* ===BATCH LIST=== */
+.download-eps {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.content-post p {
+  font-size: 15px;
+  line-height: 26px;
+  margin: 20px 0;
+}
+p {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 21px;
+  margin-bottom: 10px;
+}
+.download-eps p b {
+  font-size: 16px;
+}
+.download-eps ul {
+  margin-left: 0px;
+}
+
+.content-post ul li {
+  font-size: 15px;
+  line-height: 24px;
+}
+.download-eps ul li {
+  margin-bottom: 7px;
+  line-height: 31px !important;
+  background: #f1f1f1;
+}
+.download-eps ul li strong {
+  background: none repeat scroll 0% 0% #1e7ce5;
+  border-right: 2px solid #f5f5f5;
+  width: 100px;
+  display: block;
+  float: left;
+  color: #fff;
+  padding: 0 5px;
+  text-align: center;
+}

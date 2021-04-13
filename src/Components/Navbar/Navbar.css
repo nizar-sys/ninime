@@ -1,0 +1,125 @@
+:root {
+  --darkgray: #1c1d22;
+  --white: #f5f5f5;
+  --blue: #0059ff;
+}
+
+/* ===NAVBAR=== */
+.navbar {
+  font-family: "Poppins";
+  background: var(--darkgray);
+}
+.navbar .navbar-brand > span {
+  color: rgb(81, 199, 199);
+}
+.navbar .navbar-brand > p.text {
+  color: rgb(28, 167, 167);
+  font-size: 15px;
+  font-weight: bold;
+}
+.nav-items {
+  margin-top: -10px;
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+.nav-links {
+  display: block;
+  margin: 10px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--white);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.nav-links:hover {
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+#active {
+  border-radius: 8px;
+  background: var(--blue);
+  color: var(--white);
+}
+.active {
+  border-radius: 8px;
+  background: var(--blue);
+  color: var(--white);
+}
+
+.search-box-two {
+  display: flex;
+  margin-left: 30rem;
+  margin-top: 15.5px;
+  height: 30px;
+}
+
+.search-box-two input {
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 10px;
+  font-size: 11px;
+  width: 250px;
+}
+
+.search-box-one input,
+.search-box-two input {
+  border-radius: 30px;
+  background: #373942;
+  color: var(--white);
+}
+
+.search-box-one span,
+.search-box-two span {
+  color: var(--white);
+  padding: 8px;
+  cursor: pointer;
+  height: 100%;
+  border-radius: 50px;
+  background: var(--blue);
+}
+
+@media screen and (min-width: 992px) {
+  .navbar-brand {
+    display: none;
+  }
+
+  .search-box-one {
+    display: none;
+  }
+
+  .search-box-two span {
+    margin-left: -26px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    padding: 0 10px;
+    background-color: var(--blue);
+  }
+
+  .search-box-two {
+    display: none;
+  }
+
+  .search-box-one span {
+    height: 32px;
+    margin-left: -27px;
+    padding: 8px 8px;
+  }
+
+  .search-box-one input {
+    font-size: 13px;
+    padding: 8px;
+    height: 32px;
+    width: 260px;
+    border: none;
+  }
+}
+/* ===NAVBAR END=== */

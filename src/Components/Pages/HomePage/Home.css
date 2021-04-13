@@ -1,0 +1,14 @@
+.anime__header {
+  color: rgb(190, 184, 184);
+  margin-bottom: 25px;
+  width: 100%;
+  padding: 20px 14px;
+  border-radius: 2px;
+  padding-bottom: 0px;
+}
+.page {
+  display: block;
+}
+.btn.prevf {
+  color: white;
+}
