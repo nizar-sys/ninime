@@ -35,6 +35,7 @@ class CardComp extends Component {
                     pathname: `detail/${anime.link.endpoint}`,
                     state: anime.link.endpoint,
                   }}
+                  key={anime.link.endpoint}
                 >
                   {anime.title}
                 </Link>
@@ -45,7 +46,16 @@ class CardComp extends Component {
               <p>
                 <i className="fas fa-tag"></i> Genre{" "}
                 {anime.genre.map((genre) => {
-                  return <Link href={genre}>{genre + "  "}</Link>;
+                  return (
+                    <Link
+                      to={{
+                        pathname: `/genre/${genre}`,
+                        state: `genres/${genre}/`,
+                      }}
+                    >
+                      {genre + " , " + " "}
+                    </Link>
+                  );
                 })}
               </p>
             </div>

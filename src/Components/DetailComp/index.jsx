@@ -5,7 +5,6 @@ import "./DetailComp.css";
 class DetailComp extends Component {
   render() {
     const { anime } = this.props;
-    console.log(anime);
     return (
       <div className="container container-detail">
         <div className="judul__anime text-center">
@@ -69,7 +68,16 @@ class DetailComp extends Component {
                 <span>
                   <b className="float-left">Genre : </b>
                   {anime.genre.map((genre) => {
-                    return <Link to="#">{genre.name + " "}</Link>;
+                    return (
+                      <Link
+                        to={{
+                          pathname: `/genre/${genre.endpoint}`,
+                          state: genre.endpoint,
+                        }}
+                      >
+                        {genre.name + " "}
+                      </Link>
+                    );
                   })}
                 </span>
               </p>
@@ -86,7 +94,7 @@ class DetailComp extends Component {
               </span>
             </div>
           </div>
-          <div class="download-eps" id="downloadb">
+          <div className="download-eps" id="downloadb">
             <ul>
               {anime.list_download.map((listDownload) => {
                 return (
