@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "./DetailComp.css";
 
@@ -72,7 +72,7 @@ class DetailComp extends Component {
                       <Link
                         to={{
                           pathname: `/genre/${genre.endpoint}`,
-                          state: genre.endpoint,
+                          state: genre,
                         }}
                       >
                         {genre.name + " "}
@@ -87,37 +87,45 @@ class DetailComp extends Component {
             <p>{anime.sinopsis}</p>
           </div>
           <br />
-          <div className="listEps">
-            <div className="batch">
-              <span className="text-batch float-left">
-                Download {anime.title}
-              </span>
-            </div>
-          </div>
-          <div className="download-eps" id="downloadb">
-            <ul>
-              {anime.list_download.map((listDownload) => {
-                return (
-                  <li className="text-center">
-                    <strong>{listDownload.resolusi}</strong>
-                    {listDownload.link_download.map((link) => {
+          {anime.list_download.length > 0 ? (
+            <Fragment>
+              <div className="listEps">
+                <div className="batch">
+                  <span className="text-batch float-left">
+                    Download {anime.title}
+                  </span>
+                </div>
+              </div>
+              {anime.list_download.length > 0 ? (
+                <div className="download-eps" id="downloadb">
+                  <ul>
+                    {anime.list_download.map((listDownload) => {
                       return (
-                        <span>
-                          <a
-                            href={link.link}
-                            target="_blank"
-                            rel="nofollow noopener noreferrer"
-                          >
-                            {link.platform + " | "}
-                          </a>
-                        </span>
+                        <Fragment>
+                          <li className="text-center">
+                            <strong>{listDownload.resolusi}</strong>
+                            {listDownload.link_download.map((link) => {
+                              return (
+                                <span>
+                                  <a
+                                    href={link.link}
+                                    target="_blank"
+                                    rel="nofollow noopener noreferrer"
+                                  >
+                                    {link.platform + " | "}
+                                  </a>
+                                </span>
+                              );
+                            })}
+                          </li>
+                        </Fragment>
                       );
                     })}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+                  </ul>
+                </div>
+              ) : null}
+            </Fragment>
+          ) : null}
         </div>
       </div>
     );

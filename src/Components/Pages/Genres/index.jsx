@@ -16,7 +16,7 @@ class Genres extends Component {
   getData = () => {
     const id = this.props.location.state.toLowerCase();
     axios
-      .get(`https://kusonime-scrapper.glitch.me/api/${id}/1`)
+      .get(`https://kusonime-scrapper.glitch.me/api/genres/${id}/1`)
       .then((res) => {
         this.setState({
           isLoading: false,

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 // styling
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,49 +8,52 @@ import "./Navbar.css";
 
 // jquery
 import $ from "jquery";
+import SearchResult from "../Search";
+import axios from "axios";
 
 class Navbar extends Component {
-  state = {
-    input: true,
+  constructor(props) {
+    super(props);
+    this.state = {
+      anime: [],
+    };
+  }
+  handleSearch = (e) => {
+    const searchValue = e.target.value;
+    if (e.which === 13) {
+      axios
+        .get(`https://kusonime-scrapper.glitch.me/api/cari/${searchValue}`)
+        .then((res) => {
+          this.setState({
+            anime: res.data,
+          });
+          return <Redirect to="/search" />;
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }
   };
-
   componentDidMount = () => {
     $(".nav-item .nav-links").on("click", (e) => {
       $(".nav-links").removeClass("active");
       $(this).addClass("active");
     });
   };
-
-  handleInput = (e) => {
-    this.setState({
-      input: false,
-    });
-  };
-  handleInput2 = (e) => {
-    this.setState({
-      input: true,
-    });
-  };
-
   render() {
-    const { input } = this.state;
+    const { anime } = this.state;
+    console.log(anime);
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-lg navbar-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
           <div className="search-box-one">
-            {input ? (
-              <>
-                <input type="text" name="" placeholder="Cari Anime..." />
-                <span
-                  className="fa fa-search "
-                  onClick={(e) => this.handleInput(e)}
-                ></span>
-              </>
-            ) : (
-              <>
-                <span onClick={this.handleInput2}>&times;</span>
-              </>
-            )}
+            <input
+              type="text"
+              name="search"
+              id="search"
+              onKeyUp={(e) => this.handleSearch(e)}
+              placeholder="Cari Anime..."
+            />
           </div>
           <div
             className="navbar-toggler"
@@ -147,13 +150,13 @@ class Navbar extends Component {
                 </div>
               </li>
               <div className="search-box-two">
-                {this.state.input === true ? (
-                  <input type="text" name="" placeholder="Cari Anime..." />
-                ) : null}
-                <span
-                  className="fa fa-search"
-                  onClick={(e) => this.handleInput(e)}
-                ></span>
+                <input
+                  type="text"
+                  name="search"
+                  id="search"
+                  onKeyUp={(e) => this.handleSearch(e)}
+                  placeholder="Cari Anime..."
+                />
               </div>
             </ul>
           </div>

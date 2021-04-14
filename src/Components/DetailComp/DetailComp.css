@@ -131,6 +131,11 @@
   background: #fff;
   overflow: hidden;
 }
+.download-title {
+  padding: 8px 10px;
+  color: #fff;
+  background: #2b3e4e;
+}
 .content-post p {
   font-size: 15px;
   line-height: 26px;

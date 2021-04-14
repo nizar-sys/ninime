@@ -34,15 +34,17 @@ class HomePage extends Component {
   render() {
     const { anime, isLoading } = this.state;
     return (
-      <Fragment>
-        {isLoading ? (
-          <Loading />
-        ) : anime.length > 0 ? (
-          anime.map((anime) => {
-            return <CardComp anime={anime} key={anime.link.endpoint} />;
-          })
-        ) : null}
-      </Fragment>
+      <div style={{ marginTop: "5rem" }}>
+        <Fragment>
+          {isLoading ? (
+            <Loading />
+          ) : anime.length > 0 ? (
+            anime.map((anime) => {
+              return <CardComp anime={anime} key={anime.link.endpoint} />;
+            })
+          ) : null}
+        </Fragment>
+      </div>
     );
   }
 }
