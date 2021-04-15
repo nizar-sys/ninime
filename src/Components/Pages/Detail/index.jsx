@@ -33,7 +33,11 @@ class AnimeDetail extends Component {
     const { isLoading, animeDetail } = this.state;
     return (
       <Fragment>
-        {isLoading ? <Loading /> : <DetailComp anime={animeDetail} />}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <DetailComp anime={animeDetail} key={animeDetail.title} />
+        )}
       </Fragment>
     );
   }

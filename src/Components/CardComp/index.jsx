@@ -3,7 +3,7 @@ import React, { Component, Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./CardComp.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class CardComp extends Component {
   render() {
@@ -32,7 +32,7 @@ class CardComp extends Component {
               <h2 className="eps" style={{ backgroundColor: "transparent" }}>
                 <Link
                   to={{
-                    pathname: `detail/${anime.link.endpoint}`,
+                    pathname: `/detail/:${anime.link.endpoint}`,
                     state: anime.link.endpoint,
                   }}
                   key={anime.link.endpoint}

@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 
 import "./App.css";
+import CardComp from "./Components/CardComp";
 import Navbar from "./Components/Navbar";
 import AnimeDetail from "./Components/Pages/Detail";
+import GenreList from "./Components/Pages/GenreListPage";
 import Genres from "./Components/Pages/Genres";
 import HomePage from "./Components/Pages/HomePage";
 import SearchResult from "./Components/Search";
@@ -13,10 +15,12 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomePage} />
 
+        {/* Comp */}
+        <Route path="/genre-list" component={GenreList} />
         {/* detail */}
-        <Route path="/detail" component={AnimeDetail} />
-        <Route path="/genre" component={Genres} />
-        <Route path="/search" component={SearchResult} />
+        <Route path="/detail/:id" component={AnimeDetail} />
+        <Route path="/genre/:id" component={Genres} />
+        <Route path="/search/:id" component={SearchResult} />
       </Switch>
     </Router>
   );

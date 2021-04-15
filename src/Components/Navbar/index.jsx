@@ -8,30 +8,21 @@ import "./Navbar.css";
 
 // jquery
 import $ from "jquery";
-import SearchResult from "../Search";
-import axios from "axios";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      anime: [],
+      keyword: "",
+      onclick: false,
     };
   }
   handleSearch = (e) => {
-    const searchValue = e.target.value;
     if (e.which === 13) {
-      axios
-        .get(`https://kusonime-scrapper.glitch.me/api/cari/${searchValue}`)
-        .then((res) => {
-          this.setState({
-            anime: res.data,
-          });
-          return <Redirect to="/search" />;
-        })
-        .catch((err) => {
-          console.log(err.response);
-        });
+      this.setState({
+        keyword: e.target.value,
+        onclick: true,
+      });
     }
   };
   componentDidMount = () => {
@@ -41,12 +32,16 @@ class Navbar extends Component {
     });
   };
   render() {
-    const { anime } = this.state;
-    console.log(anime);
+    const { keyword } = this.state;
     return (
       <Fragment>
         <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
           <div className="search-box-one">
+            {keyword != "" ? (
+              <Redirect
+                to={{ pathname: `/search/:${keyword}`, state: keyword }}
+              />
+            ) : null}
             <input
               type="text"
               name="search"
@@ -88,15 +83,6 @@ class Navbar extends Component {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <Link className="dropdown-item" to="/list-anime">
-                    Semua Anime List
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Live-Action
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Anime BD
-                  </Link>
                   <Link className="dropdown-item" to="/">
                     Anime OVA
                   </Link>
@@ -104,15 +90,12 @@ class Navbar extends Component {
                     Anime Special
                   </Link>
                   <Link className="dropdown-item" to="/">
-                    Movie List
-                  </Link>
-                  <Link className="dropdown-item" to="/">
                     Anime ONA
                   </Link>
                 </div>
               </li>
               <li className="nav-item">
-                <Link className="nav-links" to="/genre">
+                <Link className="nav-links" to="/genre-list">
                   Genres
                 </Link>
               </li>
@@ -150,6 +133,11 @@ class Navbar extends Component {
                 </div>
               </li>
               <div className="search-box-two">
+                {keyword != "" ? (
+                  <Redirect
+                    to={{ pathname: `/search/:${keyword}`, state: keyword }}
+                  />
+                ) : null}
                 <input
                   type="text"
                   name="search"

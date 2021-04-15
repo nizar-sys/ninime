@@ -14,9 +14,9 @@ class Genres extends Component {
   }
 
   getData = () => {
-    const id = this.props.location.state.toLowerCase();
+    const id = this.props.location.state.slice(21);
     axios
-      .get(`https://kusonime-scrapper.glitch.me/api/genres/${id}/1`)
+      .get(`https://kusonime-scrapper.glitch.me/api/${id}/1`)
       .then((res) => {
         this.setState({
           isLoading: false,
@@ -35,15 +35,17 @@ class Genres extends Component {
   render() {
     const { isLoading, animeGenre } = this.state;
     return (
-      <Fragment>
-        {isLoading ? (
-          <Loading />
-        ) : animeGenre.length > 0 ? (
-          animeGenre.map((anime) => {
-            return <CardComp anime={anime} key={anime.link.endpoint} />;
-          })
-        ) : null}
-      </Fragment>
+      <div style={{ marginTop: "5rem" }}>
+        <Fragment>
+          {isLoading ? (
+            <Loading />
+          ) : animeGenre.length > 0 ? (
+            animeGenre.map((anime) => {
+              return <CardComp anime={anime} key={anime.link.endpoint} />;
+            })
+          ) : null}
+        </Fragment>
+      </div>
     );
   }
 }
