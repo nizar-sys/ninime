@@ -3,6 +3,11 @@ import React, { Component, Fragment } from "react";
 import GenreListComp from "../../GenreListComp";
 import Loading from "../../LoadingComp";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "./GenreListPage.css";
+import { Link } from "react-router-dom";
+
 class GenreList extends Component {
   constructor(props) {
     super(props);
@@ -36,11 +41,34 @@ class GenreList extends Component {
       <Fragment>
         {isLoading ? (
           <Loading />
-        ) : genreList.length > 0 ? (
-          genreList.map((genre) => {
-            return <GenreListComp genre={genre} key={genre.link.url} />;
-          })
-        ) : null}
+        ) : (
+          <div className="container mt-5" style={{ overflow: "hidden" }}>
+            <div className="title mt-4">
+              <h1>Genre List</h1>
+            </div>
+            <ul className="genres d-flex">
+              <li>
+                {genreList.length > 0
+                  ? genreList.map((genre) => {
+                      return (
+                        <Link
+                          key={genre.link.url}
+                          to={{
+                            pathname: `/genre/:${genre.link.url}`,
+                            state: genre.link.endpoint,
+                          }}
+                          className="float-left"
+                          title={"List Anime By Genre " + genre.title}
+                        >
+                          {genre.title}
+                        </Link>
+                      );
+                    })
+                  : null}
+              </li>
+            </ul>
+          </div>
+        )}
       </Fragment>
     );
   }

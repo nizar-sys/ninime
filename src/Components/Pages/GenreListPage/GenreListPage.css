@@ -1,0 +1,34 @@
+.menu {
+  overflow: hidden;
+  float: left;
+  width: 670px;
+}
+.title {
+  font-size: 15px;
+  padding-bottom: 5px;
+  color: #444;
+  margin-bottom: 3px;
+  border-bottom: 2px solid #0059ff;
+  margin-top: 5px;
+}
+.title h1 {
+  font-size: 15px;
+  padding-bottom: 3px;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.genres {
+  overflow: hidden;
+  line-height: 21px;
+}
+.genres li a {
+  color: #fff;
+  width: 162px;
+  padding: 12px;
+  white-space: nowrap;
+  float: left;
+  display: inline;
+  border-bottom: 1px solid #ddd;
+}
