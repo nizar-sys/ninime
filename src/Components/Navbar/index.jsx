@@ -8,6 +8,7 @@ import "./Navbar.css";
 
 // jquery
 import $ from "jquery";
+import axios from "axios";
 
 class Navbar extends Component {
   constructor(props) {
@@ -15,8 +16,21 @@ class Navbar extends Component {
     this.state = {
       keyword: "",
       onclick: false,
+      seasonList: [],
     };
   }
+  getData = () => {
+    axios
+      .get(`https://kusonime-scrapper.glitch.me/api/seasons`)
+      .then((res) => {
+        this.setState({
+          seasonList: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
   handleSearch = (e) => {
     if (e.which === 13) {
       this.setState({
@@ -30,9 +44,11 @@ class Navbar extends Component {
       $(".nav-links").removeClass("active");
       $(this).addClass("active");
     });
+    this.getData();
   };
   render() {
-    const { keyword } = this.state;
+    const { keyword, seasonList } = this.state;
+    console.log(seasonList);
     return (
       <Fragment>
         <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -68,9 +84,8 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item dropdown">
-                <Link
+                <div
                   className="nav-links dropdown-toggle"
-                  to="/#"
                   id="navbarDropdownMenuLink"
                   role="button"
                   data-toggle="dropdown"
@@ -78,20 +93,42 @@ class Navbar extends Component {
                   aria-expanded="false"
                 >
                   Anime List
-                </Link>
+                </div>
                 <div
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <Link className="dropdown-item" to="/">
-                    Anime OVA
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Anime Special
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Anime ONA
-                  </Link>
+                  {seasonList.length > 0 ? (
+                    <Fragment>
+                      <Link
+                        className="dropdown-item"
+                        to={{
+                          pathname: `/seasons/:${seasonList[1].link.endpoint}`,
+                          state: seasonList[1].link.endpoint,
+                        }}
+                      >
+                        Anime Ova
+                      </Link>
+                      <Link
+                        className="dropdown-item"
+                        to={{
+                          pathname: `/seasons/:${seasonList[2].link.endpoint}`,
+                          state: seasonList[2].link.endpoint,
+                        }}
+                      >
+                        Anime Special
+                      </Link>
+                      <Link
+                        className="dropdown-item"
+                        to={{
+                          pathname: `/seasons/:${seasonList[0].link.endpoint}`,
+                          state: seasonList[0].link.endpoint,
+                        }}
+                      >
+                        Anime ONA
+                      </Link>
+                    </Fragment>
+                  ) : null}
                 </div>
               </li>
               <li className="nav-item">
@@ -100,9 +137,8 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item dropdown">
-                <Link
+                <div
                   className="nav-links dropdown-toggle"
-                  to="/"
                   id="navbarDropdownMenuLink"
                   role="button"
                   data-toggle="dropdown"
@@ -110,26 +146,51 @@ class Navbar extends Component {
                   aria-expanded="false"
                 >
                   Tahun Rilis
-                </Link>
+                </div>
                 <div
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <Link className="dropdown-item" to="/">
-                    Semua Daftar Tahun Rilis
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Winter 2021
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Fall 2020
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Summer 2020
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Spring 2020
-                  </Link>
+                  {seasonList.length > 0 ? (
+                    <Fragment>
+                      <Link
+                        className="dropdown-item"
+                        to={{
+                          pathname: `/seasons/:${seasonList[43].link.endpoint}`,
+                          state: seasonList[43].link.endpoint,
+                        }}
+                      >
+                        Winter 2021
+                      </Link>
+                      <Link
+                        className="dropdown-item"
+                        to={{
+                          pathname: `/seasons/:${seasonList[14].link.endpoint}`,
+                          state: seasonList[14].link.endpoint,
+                        }}
+                      >
+                        Fall 2020
+                      </Link>
+                      <Link
+                        className="dropdown-item"
+                        to={{
+                          pathname: `/seasons/:${seasonList[34].link.endpoint}`,
+                          state: seasonList[34].link.endpoint,
+                        }}
+                      >
+                        Summer 2019
+                      </Link>
+                      <Link
+                        className="dropdown-item"
+                        to={{
+                          pathname: `/seasons/:${seasonList[27].link.endpoint}`,
+                          state: seasonList[27].link.endpoint,
+                        }}
+                      >
+                        Spring 2020
+                      </Link>
+                    </Fragment>
+                  ) : null}
                 </div>
               </li>
               <div className="search-box-two">

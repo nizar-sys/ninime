@@ -7,6 +7,7 @@ import AnimeDetail from "./Components/Pages/Detail";
 import GenreList from "./Components/Pages/GenreListPage";
 import Genres from "./Components/Pages/Genres";
 import HomePage from "./Components/Pages/HomePage";
+import Season from "./Components/Pages/SeasonPage";
 import SearchResult from "./Components/Search";
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/detail/:id" component={AnimeDetail} />
         <Route path="/genre/:id" component={Genres} />
         <Route path="/search/:id" component={SearchResult} />
+        <Route path="/seasons/:id" component={Season} />
       </Switch>
     </Router>
   );
